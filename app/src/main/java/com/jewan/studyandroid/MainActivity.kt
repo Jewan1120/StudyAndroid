@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             StudyAndroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Jewan",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -33,15 +33,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Welcome $name!",
         modifier = modifier
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true) // 미리 볼 수 있게 만들어주는 어노테이션
 @Composable
 fun GreetingPreview() {
     StudyAndroidTheme {
-        Greeting("Android")
+        Greeting("Jewan")
     }
 }
