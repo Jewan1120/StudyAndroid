@@ -12,9 +12,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -101,16 +104,24 @@ fun UnitConverter() {
             Box {
                 Button(onClick = {}) {
                     Text("Select")
-                    Icon(
-                        Icons.Default.ArrowDropDown,
-                        "" // 사용자가 접근성 서비스를 이용하고 있을 때 나타내 줄 설명
-                    )
+                    Icon(Icons.Default.ArrowDropDown, "")
+                }
+                DropdownMenu(expanded = true, onDismissRequest = {}) {
+                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = {})
+                    DropdownMenuItem(text = { Text("Meters") }, onClick = {})
+                    DropdownMenuItem(text = { Text("Kilometers") }, onClick = {})
                 }
             }
+            Spacer(modifier = Modifier.width(16.dp))
             Box {
                 Button(onClick = {}) {
                     Text("Select")
                     Icon(Icons.Default.ArrowDropDown, "")
+                }
+                DropdownMenu(expanded = true, onDismissRequest = {}) {
+                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = {})
+                    DropdownMenuItem(text = { Text("Meters") }, onClick = {})
+                    DropdownMenuItem(text = { Text("Kilometers") }, onClick = {})
                 }
             }
         }
