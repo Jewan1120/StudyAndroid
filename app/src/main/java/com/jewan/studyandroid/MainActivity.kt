@@ -86,7 +86,7 @@ fun ButtonWithToast() {
     }
 }
 
-@Preview
+@Preview(showBackground = true) // 배경 출력
 @Composable
 fun UnitConverterPreview() {
     UnitConverter()
@@ -106,7 +106,8 @@ fun UnitConverter() {
     fun convertUnits() {
         // ?: elvis operator
         val inputValueDouble = inputValue.toDoubleOrNull() ?: 0.0 // null일 경우 초기화
-        val result = (inputValueDouble * iconversionFactor.value / oconversionFactor.value * 100.0).roundToInt() / 100.0
+        val result =
+            (inputValueDouble * iconversionFactor.value / oconversionFactor.value * 100.0).roundToInt() / 100.0
         outputValue = result.toString()
     }
 
@@ -116,7 +117,10 @@ fun UnitConverter() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Unit Converter") // 여기에 Padding을 추가해서 칸을 띄울 수도 있음
+        Text(
+            text = "Unit Converter",
+            style = MaterialTheme.typography.headlineLarge
+        ) // 여기에 Padding을 추가해서 칸을 띄울 수도 있음
         Spacer(modifier = Modifier.height(16.dp)) // 기기 화면 픽셀 밀도에 따른 상대적인 픽셀값
         OutlinedTextField(
             value = inputValue,
@@ -184,6 +188,9 @@ fun UnitConverter() {
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text("Result : $outputValue ${outputUnit}")
+        Text(
+            text = "Result : $outputValue ${outputUnit}",
+            style = MaterialTheme.typography.headlineMedium
+        )
     }
 }
