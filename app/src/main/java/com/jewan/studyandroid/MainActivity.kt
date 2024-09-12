@@ -5,9 +5,13 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,10 +50,9 @@ fun GreetingPreview() {
 }
 
 @Composable
-fun UnitConverter() {
+fun ButtonWithToast() {
     Column {
         // 이 부분에 UI요소들을 하나 씩 넣음
-        Text("Unit Converter")
         OutlinedTextField(value = "Enter Value", onValueChange = {
             // 실행되어야 할 로직을 입력
         })
@@ -59,7 +62,6 @@ fun UnitConverter() {
                 Text("Click")
             }
         }
-        Text("Result : ")
     }
 }
 
@@ -67,4 +69,31 @@ fun UnitConverter() {
 @Composable
 fun UnitConverterPreview() {
     UnitConverter()
+}
+
+@Composable
+fun UnitConverter() {
+    Column {
+        Text("Unit Converter")
+        OutlinedTextField(value = "", onValueChange = {
+
+        })
+        Row {
+            Box {
+                Button(onClick = {}) {
+                    Text("Select")
+                    Icon(
+                        Icons.Default.ArrowDropDown,
+                        "" // 사용자가 접근성 서비스를 이용하고 있을 때 나타내 줄 설명
+                    )
+                }
+            }
+            Box {
+                Button(onClick = {}) {
+                    Text("Select")
+                    Icon(Icons.Default.ArrowDropDown, "")
+                }
+            }
+        }
+    }
 }
