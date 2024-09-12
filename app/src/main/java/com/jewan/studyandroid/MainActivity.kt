@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -23,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.jewan.studyandroid.ui.theme.StudyAndroidTheme
 
 class MainActivity :
@@ -89,7 +92,8 @@ fun UnitConverter() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Unit Converter")
+        Text("Unit Converter") // 여기에 Padding을 추가해서 칸을 띄울 수도 있음
+        Spacer(modifier = Modifier.height(16.dp)) // 기기 화면 픽셀 밀도에 따른 상대적인 픽셀값
         OutlinedTextField(value = "", onValueChange = {
 
         })
@@ -110,5 +114,7 @@ fun UnitConverter() {
                 }
             }
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        Text("Result : ")
     }
 }
