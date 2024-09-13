@@ -1,7 +1,5 @@
 package com.jewan.studyandroid.shopping
 
-import android.app.AlertDialog
-import android.inputmethodservice.Keyboard.Row
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,10 +17,8 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -67,8 +63,29 @@ fun ShoppingListApp() {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            items(sItems) {
-                ShoppingListItem(it, {}, {})
+            items(sItems) { item ->
+                if (item.isEditing) {
+                    // 편집 중일 때 출력
+                    ShoppingItemEditor(item = item, onEditComplete = { editedName, editedQuantity ->
+                        sItems = sItems.map { it.copy(isEditing = false) }
+                        val editedItem = sItems.find { it.id == item.id } // id로 값을 찾게 해줌
+                        // null일 수도 있으니 let 사용
+                        editedItem?.let {
+                            it.name = editedName
+                            it.quantitiy = editedQuantity
+                        }
+                    })
+                } else {
+                    // 편집 중이 아니라면 출력
+                    ShoppingListItem(
+                        item = item,
+                        // 버튼이 아이템과 일치하는지 체크
+                        onEditClick = {
+                            sItems = sItems.map { it.copy(isEditing = it.id == item.id) }
+                        }, onDeleteClick = {
+                            sItems -= item
+                        })
+                }
             }
         }
     }
@@ -137,7 +154,8 @@ fun ShoppingListItem(
             .border(
                 border = BorderStroke(2.dp, Color.Gray),
                 shape = RoundedCornerShape(20) // 모서리 둥근 정도
-            )
+            ),
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(text = item.name, modifier = Modifier.padding(8.dp))
         Text(text = "수량: ${item.quantitiy}", modifier = Modifier.padding(8.dp))
@@ -168,15 +186,19 @@ fun ShoppingItemEditor(item: ShoppingItem, onEditComplete: (String, Int) -> Unit
         Column {
             BasicTextField(
                 value = editedName,
-                onValueChange = {editedName = it},
+                onValueChange = { editedName = it },
                 singleLine = true,
-                modifier = Modifier.wrapContentSize().padding(8.dp) // 필요한 항목의 크기만 차지
+                modifier = Modifier
+                    .wrapContentSize()
+                    .padding(8.dp) // 필요한 항목의 크기만 차지
             )
             BasicTextField(
                 value = editedQuality,
-                onValueChange = {editedQuality = it},
+                onValueChange = { editedQuality = it },
                 singleLine = true,
-                modifier = Modifier.wrapContentSize().padding(8.dp) // 필요한 항목의 크기만 차지
+                modifier = Modifier
+                    .wrapContentSize()
+                    .padding(8.dp) // 필요한 항목의 크기만 차지
             )
         }
         Button(onClick = {
