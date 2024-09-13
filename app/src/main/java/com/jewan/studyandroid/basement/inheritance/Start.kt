@@ -10,4 +10,11 @@ fun main() {
 
     val obj3 = Tertiary()
     obj3.role()
+
+    println("제완이 일한다")
+    var jewan = Offspring()
+    jewan.canOpener()
+    jewan.role()
+    jewan.coreVales()
+    jewan.sing()
 }
