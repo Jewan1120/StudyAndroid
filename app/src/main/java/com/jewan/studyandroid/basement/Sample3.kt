@@ -1,4 +1,4 @@
-package com.jewan.studyandroid
+package com.jewan.studyandroid.basement
 
 class People constructor(val name: String) { // 생성자 생략 가능, val 생략 가능
     val friend = name

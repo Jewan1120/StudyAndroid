@@ -1,4 +1,4 @@
-package com.jewan.studyandroid
+package com.jewan.studyandroid.basement
 
 data class Car(val horsePower: Int)
 

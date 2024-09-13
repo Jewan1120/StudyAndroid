@@ -1,4 +1,4 @@
-package com.jewan.studyandroid
+package com.jewan.studyandroid.basement
 
 fun main() { // 메인 함수
     helloWorld()

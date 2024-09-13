@@ -1,4 +1,4 @@
-package com.jewan.studyandroid
+package com.jewan.studyandroid.basement
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button

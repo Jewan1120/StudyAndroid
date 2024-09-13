@@ -1,4 +1,4 @@
-package com.jewan.studyandroid
+package com.jewan.studyandroid.basement
 
 // POJO : Plain Old Java Object
 // 자바는 다 작성해야 함

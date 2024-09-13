@@ -1,4 +1,4 @@
-package com.jewan.studyandroid
+package com.jewan.studyandroid.unitconverter
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
