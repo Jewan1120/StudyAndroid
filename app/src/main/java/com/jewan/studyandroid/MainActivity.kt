@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.jewan.studyandroid.counter.CounterViewModel
+import com.jewan.studyandroid.counter.TheCounterApp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jewan.studyandroid.ui.theme.StudyAndroidTheme
 
 class MainActivity :
@@ -19,6 +22,7 @@ class MainActivity :
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModel : CounterViewModel = viewModel()
             StudyAndroidTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -26,6 +30,8 @@ class MainActivity :
                 ) {
                     // MakeFriends()
                     // UnitConverter()
+                    // ShoppingListApp()
+                    TheCounterApp(viewModel)
                 }
             }
         }
