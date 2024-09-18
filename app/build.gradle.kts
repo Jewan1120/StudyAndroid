@@ -59,7 +59,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose) // MVVM을 구현하기 위한 의존성
+    implementation(libs.retrofit) // 네트워크 호출을 위한 의존성
+    implementation(libs.gson) // JSON 객체를 코틀린 객체로 변환하는 의존성
+    implementation(libs.coil.compose) // 이미지 로딩을 위한 의존성
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,4 +71,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
 }
